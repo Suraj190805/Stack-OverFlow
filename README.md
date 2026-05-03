@@ -1,6 +1,3 @@
-<p align="center">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Stack_Overflow_icon.svg/768px-Stack_Overflow_icon.svg.png" alt="Stack Overflow Logo" width="80" />
-</p>
 
 <h1 align="center">Stack Overflow Clone</h1>
 
@@ -16,6 +13,8 @@
   <img src="https://img.shields.io/badge/Gemini-AI-4285F4?style=for-the-badge&logo=google&logoColor=white" />
 </p>
 
+---
+LIVE LINK : https://stack-over-flow-psi.vercel.app
 ---
 
 ## 📋 Table of Contents
