@@ -1,0 +1,811 @@
+/* ============================================================
+   Stripe Checkout — Real Stripe Elements Integration
+   ============================================================ */
+
+/* --- Overlay --- */
+.stripe-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  animation: stripeFadeIn 0.2s ease;
+  padding: 20px;
+  backdrop-filter: blur(6px);
+}
+
+/* --- Modal (Split Panel) --- */
+.stripe-modal {
+  display: flex;
+  width: 100%;
+  max-width: 820px;
+  max-height: 92vh;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255,255,255,0.05);
+  animation: stripeSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ─── Left: Order Summary ─── */
+.stripe-summary {
+  width: 320px;
+  flex-shrink: 0;
+  background: linear-gradient(170deg, #0a2540 0%, #1a1a2e 50%, #0f3460 100%);
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+}
+
+.stripe-summary__header {
+  margin-bottom: 28px;
+}
+
+.stripe-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stripe-brand__logo {
+  display: flex;
+  align-items: center;
+}
+
+.stripe-brand__name {
+  font-size: 15px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.9);
+}
+
+.stripe-summary__plan {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.stripe-plan-icon {
+  font-size: 30px;
+  width: 52px;
+  height: 52px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stripe-plan-name {
+  font-size: 17px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.stripe-plan-desc {
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  margin-top: 2px;
+}
+
+/* --- Line Items --- */
+.stripe-summary__lines {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.stripe-line {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+}
+
+.stripe-line--total {
+  padding-top: 12px;
+  margin-top: 4px;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* --- Recurring --- */
+.stripe-recurring {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.5;
+  padding: 12px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 8px;
+  margin-bottom: auto;
+}
+
+.stripe-recurring__icon {
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+/* --- Powered by --- */
+.stripe-powered {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.3);
+  margin-top: 16px;
+}
+
+.stripe-powered strong {
+  color: rgba(255,255,255,0.5);
+}
+
+/* ─── Right: Payment Form ─── */
+.stripe-form-panel {
+  flex: 1;
+  background: #fff;
+  padding: 28px 32px;
+  overflow-y: auto;
+  position: relative;
+}
+
+.stripe-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: #f1f1f1;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 14px;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.stripe-close:hover {
+  background: #e0e0e0;
+  color: #333;
+}
+
+.stripe-form-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin-bottom: 8px;
+}
+
+/* --- Connected Badge --- */
+.stripe-connected-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: #2f6f44;
+  background: #ecfdf5;
+  border: 1px solid #d1fae5;
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.stripe-connected-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #2f6f44;
+  animation: stripePulse 2s infinite;
+}
+
+/* --- Fields --- */
+.stripe-field {
+  margin-bottom: 16px;
+}
+
+.stripe-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin-bottom: 6px;
+}
+
+.stripe-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #d9d9d9;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #1a1a2e;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  background: #fff;
+}
+
+.stripe-input::placeholder {
+  color: #a3a3a3;
+}
+
+.stripe-input:focus {
+  border-color: #635bff;
+  box-shadow: 0 0 0 3px rgba(99, 91, 255, 0.12);
+}
+
+/* --- Card Group (combined border) --- */
+.stripe-card-group {
+  border: 1px solid #d9d9d9;
+  border-radius: 6px;
+  overflow: hidden;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.stripe-card-group:focus-within {
+  border-color: #635bff;
+  box-shadow: 0 0 0 3px rgba(99, 91, 255, 0.12);
+}
+
+.stripe-card-number-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+/* ─── Stripe Element Wrappers ─── */
+.stripe-element-wrapper {
+  padding: 10px 12px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.stripe-element-wrapper--num {
+  flex: 1;
+  padding-right: 90px;
+}
+
+.stripe-element-wrapper--num .StripeElement {
+  width: 100%;
+}
+
+.stripe-card-bottom-row {
+  display: flex;
+}
+
+.stripe-element-wrapper--expiry {
+  flex: 1;
+  border-right: 1px solid #e8e8e8;
+}
+
+.stripe-element-wrapper--expiry .StripeElement {
+  width: 100%;
+}
+
+.stripe-element-wrapper--cvc {
+  flex: 1;
+}
+
+.stripe-element-wrapper--cvc .StripeElement {
+  width: 100%;
+}
+
+/* Stripe Element classes */
+.stripe-element {
+  width: 100%;
+}
+
+.stripe-element--focus {
+  /* handled by parent group focus-within */
+}
+
+.stripe-element--invalid {
+  color: #df1b41;
+}
+
+.stripe-element--complete {
+  color: #2f6f44;
+}
+
+/* Card brand badge */
+.stripe-card-brand-badge {
+  position: absolute;
+  right: 66px;
+  font-size: 9px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: #fff;
+  letter-spacing: 0.5px;
+  animation: stripeFadeIn 0.2s ease;
+}
+
+.stripe-card-icons {
+  position: absolute;
+  right: 10px;
+  display: flex;
+  gap: 4px;
+}
+
+.stripe-card-icon {
+  font-size: 8px;
+  font-weight: 800;
+  padding: 2px 4px;
+  border-radius: 2px;
+  color: #fff;
+  letter-spacing: 0.3px;
+}
+
+.stripe-card-icon--visa {
+  background: #1a1f71;
+}
+
+.stripe-card-icon--mc {
+  background: #eb001b;
+}
+
+.stripe-card-icon--amex {
+  background: #006fcf;
+}
+
+/* --- Save Card --- */
+.stripe-save-card {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #525960;
+  cursor: pointer;
+  margin-bottom: 16px;
+}
+
+.stripe-save-card input[type="checkbox"] {
+  accent-color: #635bff;
+  width: 16px;
+  height: 16px;
+}
+
+/* --- Pay Button --- */
+.stripe-pay-btn {
+  width: 100%;
+  padding: 12px;
+  background: #635bff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  margin-bottom: 12px;
+}
+
+.stripe-pay-btn:hover:not(:disabled) {
+  background: #5851db;
+  box-shadow: 0 4px 14px rgba(99, 91, 255, 0.35);
+  transform: translateY(-1px);
+}
+
+.stripe-pay-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.stripe-pay-btn--auth {
+  background: #2f6f44;
+}
+
+.stripe-pay-btn--auth:hover {
+  background: #256b38;
+  box-shadow: 0 4px 14px rgba(47, 111, 68, 0.35);
+}
+
+/* --- Error --- */
+.stripe-error {
+  color: #df1b41;
+  font-size: 13px;
+  padding: 10px 12px;
+  background: #fdf2f4;
+  border-radius: 6px;
+  border-left: 3px solid #df1b41;
+  margin-bottom: 12px;
+  animation: stripeShake 0.3s ease;
+}
+
+/* --- Time Notice --- */
+.stripe-time-notice {
+  text-align: center;
+  font-size: 12px;
+  color: #856404;
+  padding: 10px;
+  background: #FFF8E1;
+  border-radius: 6px;
+  border: 1px solid #F1E5BC;
+  margin-bottom: 12px;
+}
+
+/* --- Test Cards Info --- */
+.stripe-test-cards {
+  margin-bottom: 12px;
+  padding: 10px 12px;
+  background: #f0f0ff;
+  border: 1px solid #e0e0ff;
+  border-radius: 6px;
+}
+
+.stripe-test-cards__title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #635bff;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stripe-test-cards__list {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 11px;
+  color: #525960;
+}
+
+.stripe-test-cards__list code {
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', monospace;
+  background: #fff;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 10px;
+  color: #1a1a2e;
+  border: 1px solid #e0e0e0;
+}
+
+/* --- Terms --- */
+.stripe-terms {
+  font-size: 11px;
+  color: #8c8c8c;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.stripe-terms a {
+  color: #635bff;
+}
+
+/* --- Link --- */
+.stripe-link {
+  background: none;
+  border: none;
+  color: #635bff;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+}
+
+.stripe-link:hover {
+  text-decoration: underline;
+}
+
+.stripe-link--cancel {
+  display: block;
+  margin: 8px auto 0;
+  color: #8c8c8c;
+}
+
+/* ─── Processing ─── */
+.stripe-processing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  gap: 16px;
+}
+
+.stripe-spinner {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.stripe-spinner__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #635bff;
+  animation: stripeBounce 1.4s ease-in-out infinite;
+}
+
+.stripe-spinner__dot--2 { animation-delay: 0.16s; }
+.stripe-spinner__dot--3 { animation-delay: 0.32s; }
+
+.stripe-processing__title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a2e;
+}
+
+.stripe-processing__sub {
+  font-size: 13px;
+  color: #8c8c8c;
+}
+
+/* ─── 3D Secure Auth ─── */
+.stripe-auth {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.stripe-auth__shield {
+  font-size: 40px;
+  margin-bottom: 14px;
+}
+
+.stripe-auth__title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 8px;
+}
+
+.stripe-auth__desc {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 22px;
+}
+
+.stripe-auth__inputs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.stripe-auth__digit {
+  width: 44px;
+  height: 50px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  border: 2px solid #d9d9d9;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  color: #1a1a2e;
+}
+
+.stripe-auth__digit:focus {
+  border-color: #635bff;
+  box-shadow: 0 0 0 3px rgba(99, 91, 255, 0.12);
+}
+
+.stripe-auth__timer {
+  font-size: 12px;
+  color: #8c8c8c;
+  margin-top: 10px;
+}
+
+/* ─── Success ─── */
+.stripe-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 30px 0;
+}
+
+.stripe-success__check {
+  width: 68px;
+  height: 68px;
+  margin-bottom: 18px;
+}
+
+.stripe-check-svg {
+  width: 68px;
+  height: 68px;
+}
+
+.stripe-check-circle {
+  stroke: #2f6f44;
+  stroke-width: 2;
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  animation: stripeStroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.stripe-check-path {
+  stroke: #2f6f44;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: stripeStroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.4s forwards;
+}
+
+.stripe-success__title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #2f6f44;
+  margin-bottom: 6px;
+}
+
+.stripe-success__amount {
+  font-size: 32px;
+  font-weight: 800;
+  color: #1a1a2e;
+  margin-bottom: 4px;
+}
+
+.stripe-success__plan {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 18px;
+}
+
+.stripe-success__receipt {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 12px;
+  color: #8c8c8c;
+  padding: 10px 20px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  margin-bottom: 14px;
+}
+
+.stripe-success__stripe-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: #8c8c8c;
+  padding: 6px 14px;
+  border: 1px solid #e8e8e8;
+  border-radius: 20px;
+}
+
+/* ─── Failed ─── */
+.stripe-failed {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 30px 0;
+}
+
+.stripe-failed__icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #fdf2f4;
+  color: #df1b41;
+  font-size: 26px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.stripe-failed__title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #df1b41;
+  margin-bottom: 8px;
+}
+
+.stripe-failed__desc {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* ─── Animations ─── */
+@keyframes stripeFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes stripeSlideUp {
+  from { opacity: 0; transform: translateY(24px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes stripeBounce {
+  0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+  40% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes stripeStroke {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes stripePulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+@keyframes stripeShake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-4px); }
+  40% { transform: translateX(4px); }
+  60% { transform: translateX(-2px); }
+  80% { transform: translateX(2px); }
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .stripe-modal {
+    flex-direction: column;
+    max-width: 100%;
+    max-height: 95vh;
+  }
+
+  .stripe-summary {
+    width: 100%;
+    padding: 20px;
+    flex-shrink: initial;
+  }
+
+  .stripe-summary__plan {
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+  }
+
+  .stripe-recurring {
+    margin-bottom: 0;
+  }
+
+  .stripe-powered {
+    display: none;
+  }
+
+  .stripe-form-panel {
+    padding: 24px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .stripe-overlay {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  .stripe-modal {
+    border-radius: 16px 16px 0 0;
+  }
+
+  .stripe-auth__inputs {
+    gap: 6px;
+  }
+
+  .stripe-auth__digit {
+    width: 38px;
+    height: 44px;
+    font-size: 18px;
+  }
+
+  .stripe-test-cards {
+    display: none;
+  }
+}

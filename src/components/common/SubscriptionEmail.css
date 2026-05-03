@@ -1,0 +1,340 @@
+/* ============================================================
+   Subscription Email Sent — Confirmation Component
+   Animated email-sent confirmation after successful payment
+   ============================================================ */
+
+.email-sent-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1100;
+  animation: fadeIn 0.2s ease;
+  padding: 20px;
+  backdrop-filter: blur(4px);
+}
+
+.email-sent-modal {
+  background: var(--bg-primary);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  max-width: 480px;
+  width: 100%;
+  overflow: hidden;
+  animation: emailModalSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes emailModalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ── Header Banner ── */
+.email-sent-header {
+  background: linear-gradient(135deg, #232629 0%, #3a3d41 100%);
+  padding: 28px 32px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.email-sent-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 50%, rgba(244, 130, 37, 0.15) 0%, transparent 60%);
+}
+
+.email-sent-icon {
+  width: 64px;
+  height: 64px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+  animation: emailIconPop 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+  position: relative;
+}
+
+@keyframes emailIconPop {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.email-sent-icon__envelope {
+  font-size: 28px;
+  animation: emailFly 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+}
+
+@keyframes emailFly {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.email-sent-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+  position: relative;
+}
+
+.email-sent-subtitle {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 6px;
+  position: relative;
+}
+
+/* ── Body ── */
+.email-sent-body {
+  padding: 24px 32px;
+}
+
+/* ── Email Details Card ── */
+.email-sent-details {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.email-sent-detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  font-size: 13px;
+}
+
+.email-sent-detail-row + .email-sent-detail-row {
+  border-top: 1px solid var(--border-color);
+}
+
+.email-sent-detail-label {
+  color: var(--text-muted);
+}
+
+.email-sent-detail-value {
+  color: var(--text-primary);
+  font-weight: 600;
+  text-align: right;
+  max-width: 240px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Status indicators ── */
+.email-sent-status {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.email-status-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  animation: statusSlideIn 0.3s ease both;
+}
+
+.email-status-item:nth-child(1) { animation-delay: 0.1s; }
+.email-status-item:nth-child(2) { animation-delay: 0.25s; }
+.email-status-item:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes statusSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.email-status-item--success {
+  background: var(--success-bg);
+  border: 1px solid var(--success-border);
+  color: var(--success);
+}
+
+.email-status-item--info {
+  background: var(--info-bg);
+  border: 1px solid var(--info-border);
+  color: var(--info);
+}
+
+.email-status-item__icon {
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.email-status-item__text {
+  flex: 1;
+  line-height: 1.4;
+}
+
+.email-status-item__text strong {
+  font-weight: 600;
+}
+
+/* ── Plan summary mini-card ── */
+.email-sent-plan {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  margin-bottom: 20px;
+}
+
+.email-sent-plan__icon {
+  font-size: 32px;
+  line-height: 1;
+}
+
+.email-sent-plan__info {
+  flex: 1;
+}
+
+.email-sent-plan__name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.email-sent-plan__meta {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.email-sent-plan__amount {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* ── Action Buttons ── */
+.email-sent-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.email-sent-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--font-family);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border: 1px solid transparent;
+  line-height: 1;
+}
+
+.email-sent-btn--primary {
+  background: var(--so-blue);
+  color: #fff;
+  border-color: var(--so-blue);
+}
+
+.email-sent-btn--primary:hover {
+  background: var(--so-blue-hover);
+}
+
+.email-sent-btn--secondary {
+  background: var(--bg-primary);
+  color: var(--text-secondary);
+  border-color: var(--border-color);
+}
+
+.email-sent-btn--secondary:hover {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+/* ── Retry button ── */
+.email-sent-btn--retry {
+  background: #F48225;
+  color: #fff;
+  border-color: #F48225;
+}
+
+.email-sent-btn--retry:hover {
+  background: #e0721a;
+  border-color: #e0721a;
+}
+
+/* ── Failed header state ── */
+.email-sent-header--failed {
+  background: linear-gradient(135deg, #5a1a1a 0%, #8b2525 100%);
+}
+
+.email-sent-header--failed::before {
+  background: radial-gradient(circle at 30% 50%, rgba(255, 80, 80, 0.15) 0%, transparent 60%);
+}
+
+/* ── Error status item ── */
+.email-status-item--error {
+  background: rgba(220, 53, 69, 0.08);
+  border: 1px solid rgba(220, 53, 69, 0.25);
+  color: #dc3545;
+}
+
+.email-error-detail {
+  font-size: 11px;
+  opacity: 0.8;
+  font-style: italic;
+  word-break: break-word;
+}
+
+/* ── Responsive ── */
+@media (max-width: 520px) {
+  .email-sent-body {
+    padding: 20px;
+  }
+  .email-sent-header {
+    padding: 24px 20px;
+  }
+  .email-sent-actions {
+    flex-direction: column;
+  }
+}

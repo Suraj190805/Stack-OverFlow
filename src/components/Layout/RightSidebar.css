@@ -1,0 +1,213 @@
+/* ============================================================
+   Right Sidebar — SO Official Style
+   ============================================================ */
+
+.right-sidebar {
+  width: var(--right-sidebar);
+  flex-shrink: 0;
+  padding-top: 24px;
+  padding-left: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* --- Widget --- */
+.right-sidebar__widget {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-primary);
+  overflow: hidden;
+}
+
+.right-sidebar__widget--yellow {
+  border-color: #F1E5BC;
+  background: #FBF3D5;
+}
+
+.right-sidebar__widget-title {
+  padding: 12px 15px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.right-sidebar__widget-title--yellow {
+  background: #FBEED8;
+  border-color: #F1E5BC;
+  color: #525960;
+}
+
+.right-sidebar__widget-list {
+  padding: 4px 0;
+}
+
+.right-sidebar__widget-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 8px 15px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.right-sidebar__widget-item--link a {
+  color: var(--text-link);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.right-sidebar__widget-item--link a:hover {
+  color: var(--so-blue-hover);
+}
+
+.right-sidebar__widget-icon {
+  font-size: 14px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* --- Hot Meta Posts --- */
+.right-sidebar__widget-item--meta {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.right-sidebar__meta-votes {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 20px;
+  padding: 0 4px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.right-sidebar__meta-link {
+  color: var(--text-link) !important;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.right-sidebar__meta-link:hover {
+  color: var(--so-blue-hover) !important;
+}
+
+/* --- Custom Filters --- */
+.right-sidebar__custom-filters {
+  padding: 12px 15px;
+}
+
+.right-sidebar__create-filter {
+  font-size: 13px;
+  color: var(--text-link);
+}
+
+.right-sidebar__create-filter:hover {
+  color: var(--so-blue-hover);
+}
+
+/* --- Tags Sections (Watched + Ignored) --- */
+.right-sidebar__tags-section {
+  padding: 12px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.right-sidebar__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.right-sidebar__tag-removable {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding-right: 4px;
+}
+
+.right-sidebar__tag-remove {
+  background: none;
+  border: none;
+  color: var(--tag-color);
+  font-size: 14px;
+  line-height: 1;
+  padding: 0 2px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.1s;
+}
+
+.right-sidebar__tag-remove:hover {
+  opacity: 1;
+  color: var(--error);
+}
+
+.right-sidebar__tag--ignored {
+  background: #fce4e4;
+  color: #8e4a49;
+}
+
+.right-sidebar__tag--ignored:hover {
+  background: #f5cccc;
+  color: #733939;
+}
+
+.right-sidebar__tags-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 0;
+  text-align: center;
+}
+
+.right-sidebar__tags-empty p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.right-sidebar__tags-empty-text {
+  font-size: 13px;
+  color: var(--text-muted);
+  padding: 4px 0;
+}
+
+.right-sidebar__watch-btn {
+  align-self: center;
+  margin-top: 4px;
+}
+
+/* --- Tag Input Row --- */
+.right-sidebar__tag-input-row {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.right-sidebar__tag-input {
+  flex: 1;
+  min-width: 0;
+  font-size: 12px !important;
+  padding: 4px 8px !important;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .right-sidebar {
+    display: none;
+  }
+}

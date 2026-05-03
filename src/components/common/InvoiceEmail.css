@@ -1,0 +1,340 @@
+/* ============================================================
+   Invoice Email / Preview Modal
+   ============================================================ */
+
+.inv-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  animation: rzpFadeIn 0.2s ease;
+  padding: 20px;
+  backdrop-filter: blur(4px);
+}
+
+.inv-modal {
+  background: #fff;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+  animation: rzpSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* --- Invoice Preview --- */
+.inv-preview {
+  padding: 24px;
+  background: linear-gradient(180deg, #fafbfc 0%, #fff 100%);
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.inv-preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #F48225;
+}
+
+.inv-preview-logo {
+  font-size: 18px;
+  font-weight: 800;
+  color: #232629;
+}
+
+.inv-preview-logo span {
+  color: #F48225;
+}
+
+.inv-preview-sub {
+  font-size: 11px;
+  color: #6A737C;
+  margin-top: 2px;
+}
+
+.inv-preview-info {
+  text-align: right;
+}
+
+.inv-preview-label {
+  font-size: 22px;
+  font-weight: 300;
+  color: #6A737C;
+  letter-spacing: 2px;
+}
+
+.inv-preview-no {
+  font-size: 12px;
+  color: #6A737C;
+  margin-top: 2px;
+  font-family: monospace;
+}
+
+/* --- Meta --- */
+.inv-preview-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.inv-preview-meta-group h4 {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #6A737C;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.inv-meta-value {
+  font-size: 13px;
+  font-weight: 600;
+  color: #232629;
+}
+
+.inv-meta-detail {
+  font-size: 12px;
+  color: #6A737C;
+  margin-top: 1px;
+}
+
+.inv-meta-txn {
+  font-family: monospace;
+  font-size: 10px;
+  color: #9FA6AD;
+  margin-top: 4px;
+  word-break: break-all;
+}
+
+.inv-preview-meta-group--right {
+  text-align: right;
+}
+
+/* --- Items --- */
+.inv-preview-items {
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.inv-preview-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 14px;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.inv-preview-item:last-child {
+  border-bottom: none;
+}
+
+.inv-preview-item--tax {
+  background: #fafbfc;
+}
+
+.inv-item-desc {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: #232629;
+}
+
+.inv-item-plan-icon {
+  font-size: 24px;
+  width: 36px;
+  height: 36px;
+  background: #f1f2f3;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inv-item-sub {
+  display: block;
+  font-size: 11px;
+  color: #6A737C;
+  font-weight: 400;
+  margin-top: 1px;
+}
+
+.inv-item-amount {
+  font-size: 14px;
+  font-weight: 700;
+  color: #232629;
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- Total --- */
+.inv-preview-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  background: linear-gradient(135deg, #1a1a2e, #0f3460);
+  border-radius: 8px;
+  margin-bottom: 14px;
+}
+
+.inv-preview-total-label {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.inv-preview-total-amount {
+  font-size: 22px;
+  font-weight: 800;
+  color: #fff;
+}
+
+/* --- Paid Badge --- */
+.inv-preview-paid-badge {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.inv-preview-paid-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 16px;
+  background: #EDF4ED;
+  color: #2F6F44;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin: 0 auto;
+}
+
+.inv-paid-check {
+  font-weight: 700;
+}
+
+.inv-preview-renewal {
+  text-align: center;
+  font-size: 12px;
+  color: #6A737C;
+  margin-top: 10px;
+}
+
+/* --- Email Notice --- */
+.inv-email-notice {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 20px;
+  background: #EDF4ED;
+  border-bottom: 1px solid #A6D9A8;
+}
+
+.inv-email-icon {
+  font-size: 20px;
+}
+
+.inv-email-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.inv-email-text strong {
+  font-size: 13px;
+  color: #2F6F44;
+}
+
+.inv-email-text span {
+  font-size: 11px;
+  color: #6A737C;
+  margin-top: 1px;
+}
+
+.inv-email-check {
+  width: 24px;
+  height: 24px;
+  background: #2F6F44;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* --- Actions --- */
+.inv-actions {
+  padding: 16px 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.inv-btn {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.inv-btn--download {
+  background: #0A95FF;
+  color: #fff;
+}
+
+.inv-btn--download:hover {
+  background: #0074CC;
+}
+
+.inv-btn--close {
+  background: #f1f2f3;
+  color: #525960;
+}
+
+.inv-btn--close:hover {
+  background: #e0e2e4;
+}
+
+@media (max-width: 480px) {
+  .inv-modal {
+    max-width: 100%;
+  }
+
+  .inv-preview-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .inv-preview-info {
+    text-align: left;
+  }
+
+  .inv-preview-meta {
+    grid-template-columns: 1fr;
+  }
+
+  .inv-preview-meta-group--right {
+    text-align: left;
+  }
+}

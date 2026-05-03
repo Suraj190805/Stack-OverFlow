@@ -1,0 +1,449 @@
+/* ============================================================
+   Profile — SO Official Style
+   ============================================================ */
+
+/* --- Profile Header --- */
+.profile-header {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 24px;
+}
+
+.profile-header__avatar-wrapper {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.profile-header__avatar {
+  width: 128px;
+  height: 128px;
+  border-radius: var(--radius-md);
+  background: #9FA6AD;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.profile-header__avatar-img {
+  width: 128px;
+  height: 128px;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+}
+
+.profile-header__avatar-edit {
+  position: absolute;
+  bottom: -6px;
+  right: -6px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--bg-primary);
+  border: 2px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.15s;
+  box-shadow: var(--shadow-sm);
+}
+
+.profile-header__avatar-edit:hover {
+  border-color: var(--so-blue);
+  background: var(--so-blue-light);
+}
+
+.profile-header__info {
+  flex: 1;
+  min-width: 0;
+}
+
+.profile-header__name-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.profile-header__name {
+  font-size: 34px;
+  font-weight: 400;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.profile-header__bio {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-top: 8px;
+  line-height: 1.5;
+}
+
+.profile-header__badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+/* --- Profile Edit Form --- */
+.profile-edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.profile-edit-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* --- Stats Grid --- */
+.profile-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.profile-stat-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  text-align: center;
+}
+
+.profile-stat-card__value {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: block;
+}
+
+.profile-stat-card__label {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 4px;
+  display: block;
+}
+
+/* --- Profile Tabs --- */
+.profile-tabs {
+  display: flex;
+  gap: 2px;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 0;
+}
+
+.profile-tab {
+  padding: 10px 16px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  font-family: var(--font-family);
+  transition: all 0.15s;
+}
+
+.profile-tab:hover {
+  color: var(--text-primary);
+}
+
+.profile-tab--active {
+  color: var(--text-primary);
+  font-weight: 500;
+  border-bottom-color: var(--so-orange);
+}
+
+/* --- Tab Content --- */
+.profile-tab-content {
+  animation: fadeIn 0.2s ease;
+}
+
+/* --- Friends Grid --- */
+.friends-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.friend-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px 6px 6px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  color: var(--text-primary);
+}
+
+.friend-chip__avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #9FA6AD;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.friend-chip__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.friend-chip__name {
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.friend-chip__points {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* --- Transaction Mini List (Profile Overview) --- */
+.transactions-mini {
+  display: flex;
+  flex-direction: column;
+}
+
+.transaction-mini-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 13px;
+}
+
+.transaction-mini-item:last-child {
+  border-bottom: none;
+}
+
+.transaction-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.transaction-dot--positive { background: var(--success); }
+.transaction-dot--negative { background: var(--error); }
+
+.transaction-mini-details {
+  flex: 1;
+  color: var(--text-primary);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.transaction-mini-amount {
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.transaction-mini-amount.positive { color: var(--success); }
+.transaction-mini-amount.negative { color: var(--error); }
+
+/* --- Activity List --- */
+.activity-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.activity-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.activity-item:last-child {
+  border-bottom: none;
+}
+
+.activity-item__icon {
+  font-size: 18px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.activity-item__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.activity-item__title {
+  font-size: 13px;
+  color: var(--text-link);
+  line-height: 1.4;
+}
+
+.activity-item__meta {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .profile-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .profile-header__name-row {
+    justify-content: center;
+  }
+  
+  .profile-header__avatar,
+  .profile-header__avatar-img {
+    width: 96px;
+    height: 96px;
+    font-size: 36px;
+  }
+  
+  .profile-header__badges {
+    justify-content: center;
+  }
+  
+  .profile-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* --- People Discovery --- */
+.people-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.people-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border-color);
+  transition: background 0.15s;
+}
+
+.people-card:last-child {
+  border-bottom: none;
+}
+
+.people-card:hover {
+  background: var(--bg-hover);
+  margin: 0 -16px;
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+}
+
+.people-card--request {
+  background: var(--info-bg);
+  margin: 0 -16px;
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  border-bottom: none;
+  margin-bottom: 4px;
+}
+
+.people-card--request:last-child {
+  margin-bottom: 0;
+}
+
+.people-card__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #9FA6AD;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+
+.people-card__info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+
+.people-card__name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.people-card__username {
+  font-size: 12px;
+  color: var(--text-link);
+}
+
+.people-card__meta {
+  font-size: 11px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+  margin-top: 1px;
+}
+
+.people-card__actions {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.people-card__remove {
+  color: var(--text-muted) !important;
+  opacity: 0;
+  transition: all 0.15s !important;
+}
+
+.people-card:hover .people-card__remove {
+  opacity: 1;
+}
+
+.people-card__remove:hover {
+  color: var(--error) !important;
+  background: var(--error-bg) !important;
+}
+
+@media (max-width: 768px) {
+  .people-card__remove {
+    opacity: 1;
+  }
+
+  .people-card:hover {
+    margin: 0;
+    padding: 12px 0;
+  }
+}

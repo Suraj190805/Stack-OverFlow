@@ -1,0 +1,339 @@
+/* ============================================================
+   Login Page — Stack Overflow Official Auth Style
+   Premium redesign with social login, dividers, animations
+   ============================================================ */
+
+/* ── Auth page wrapper (shared with register) ── */
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  padding-top: calc(var(--header-height, 50px) + 24px);
+  background: var(--bg-tertiary);
+  position: relative;
+}
+
+/* ── SO Logo Mark ── */
+.auth-logo {
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Social Login Buttons ── */
+.auth-social-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  max-width: 316px;
+  margin-bottom: 16px;
+}
+
+.auth-social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 500;
+  font-family: var(--font-family);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border: 1px solid;
+  line-height: 1;
+}
+
+.auth-social-btn svg {
+  flex-shrink: 0;
+}
+
+/* Google */
+.auth-social-btn--google {
+  background: #fff;
+  color: #3d4043;
+  border-color: #dadce0;
+}
+.auth-social-btn--google:hover {
+  background: #f8f9fa;
+  border-color: #c6c9cd;
+  box-shadow: 0 1px 3px rgba(60, 64, 67, 0.15);
+}
+
+/* GitHub */
+.auth-social-btn--github {
+  background: #2f3337;
+  color: #fff;
+  border-color: #2f3337;
+}
+.auth-social-btn--github:hover {
+  background: #24292e;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Facebook */
+.auth-social-btn--facebook {
+  background: #385499;
+  color: #fff;
+  border-color: #385499;
+}
+.auth-social-btn--facebook:hover {
+  background: #314a86;
+  box-shadow: 0 1px 3px rgba(56, 84, 153, 0.3);
+}
+
+/* ── OR Divider ── */
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 316px;
+  margin-bottom: 16px;
+}
+
+.auth-divider__line {
+  flex: 1;
+  height: 1px;
+  background: var(--border-color);
+}
+
+.auth-divider__text {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 500;
+  text-transform: lowercase;
+}
+
+/* ── Main Auth Card ── */
+.auth-card-so {
+  width: 100%;
+  max-width: 316px;
+  padding: 24px;
+  background: var(--bg-primary);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  animation: authCardSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes authCardSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.auth-card-so .auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.auth-card-so .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.auth-card-so .form-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.auth-card-so .form-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.auth-card-so .form-input {
+  font-size: 13px;
+  padding: 7.8px 9.1px;
+  border: 1px solid #BABFC4;
+  border-radius: var(--radius-sm);
+  outline: none;
+  transition: all 0.15s;
+  background: var(--bg-input);
+  color: var(--text-primary);
+}
+
+.auth-card-so .form-input:focus {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 4px rgba(0, 116, 204, 0.15);
+}
+
+/* ── Footer link text ── */
+.auth-footer-text {
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: 24px;
+  max-width: 316px;
+  width: 100%;
+}
+
+.auth-footer-text a {
+  color: var(--text-link);
+  font-weight: 500;
+}
+
+/* ── Demo Hints ── */
+.login-demo-box {
+  margin-top: 24px;
+  max-width: 316px;
+  width: 100%;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  animation: authCardSlideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+}
+
+.login-demo-box__title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.login-demo-box__accounts {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.login-demo-account {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.15s;
+  border: 1px solid transparent;
+}
+
+.login-demo-account:hover {
+  background: var(--so-blue-light);
+  border-color: var(--so-blue);
+}
+
+.login-demo-account__info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.login-demo-account__name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.login-demo-account__email {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.login-demo-account__badge {
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.login-demo-account__badge--free {
+  background: var(--so-blue-light);
+  color: var(--tag-color);
+}
+.login-demo-account__badge--silver {
+  background: #E8E8E8;
+  color: #525960;
+}
+.login-demo-account__badge--gold {
+  background: #FFF4D1;
+  color: #635006;
+}
+
+.login-demo-password {
+  margin-top: 8px;
+  padding: 6px 10px;
+  background: var(--success-bg);
+  border: 1px solid var(--success-border);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  color: var(--success);
+  text-align: center;
+}
+
+.login-demo-password code {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* ── Password strength (shared) ── */
+.password-strength {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.password-strength__bar {
+  flex: 1;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--bg-tertiary);
+  overflow: hidden;
+}
+
+.password-strength__fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.3s, background 0.3s;
+}
+
+.password-strength__label {
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ── Password mismatch ── */
+.password-mismatch {
+  font-size: 12px;
+  color: var(--error);
+  margin-top: 2px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .auth-page {
+    padding: 16px;
+  }
+  .auth-card-so {
+    padding: 20px 16px;
+  }
+}

@@ -1,0 +1,247 @@
+/* ============================================================
+   Subscription Plans — SO Official Style + Enhancements
+   ============================================================ */
+
+/* --- Current Plan Banner --- */
+.sub-current-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  background: linear-gradient(135deg, #E1ECF4, #F0F5FF);
+  border: 1px solid #B8D4EA;
+  border-radius: var(--radius-md);
+  margin-bottom: 16px;
+}
+
+.sub-current-banner__info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sub-current-banner__icon {
+  font-size: 28px;
+  width: 44px;
+  height: 44px;
+  background: #fff;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.sub-current-banner__label {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.sub-current-banner__plan {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.sub-current-banner__quota {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--so-blue);
+  background: #fff;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-color);
+}
+
+/* --- Payment Window Alert --- */
+.payment-window-alert {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.payment-alert-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+/* --- Plans Grid --- */
+.plans-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+/* --- Plan Card --- */
+.plan-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  text-align: center;
+  transition: all 0.15s;
+  position: relative;
+  animation: fadeIn 0.3s ease both;
+}
+
+.plan-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.plan-card--active {
+  border-color: var(--so-blue);
+  box-shadow: 0 0 0 1px var(--so-blue);
+}
+
+.plan-card--featured {
+  border-color: var(--so-orange);
+  box-shadow: 0 0 0 1px var(--so-orange);
+}
+
+.plan-card__glow {
+  display: none;
+}
+
+.plan-card--featured .plan-card__glow {
+  display: block;
+  position: absolute;
+  inset: -1px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, rgba(244,130,37,0.06), transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* --- Ribbon --- */
+.plan-card__ribbon {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--so-orange);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 14px;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  z-index: 1;
+}
+
+.plan-card__icon {
+  font-size: 32px;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.plan-card__name {
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  position: relative;
+  z-index: 1;
+}
+
+.plan-card__price {
+  font-size: 27px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  position: relative;
+  z-index: 1;
+}
+
+.plan-card__period {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.plan-card__features {
+  text-align: left;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.plan-card__features li {
+  padding: 4px 0;
+  font-size: 13px;
+  color: var(--text-secondary);
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.plan-feature-check {
+  color: var(--success);
+  font-weight: 700;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.plan-card__btn {
+  position: relative;
+  z-index: 1;
+}
+
+/* --- Transaction History --- */
+.sub-txn-section {
+  margin-top: 8px;
+}
+
+.sub-txn-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.sub-txn-badge--upgrade {
+  background: var(--success-bg);
+  color: var(--success);
+}
+
+.sub-txn-badge--downgrade {
+  background: var(--warning-bg);
+  color: var(--warning);
+}
+
+.sub-txn-invoice {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.sub-txn-amount {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .sub-current-banner {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .sub-current-banner__info {
+    flex-direction: column;
+  }
+
+  .plans-grid {
+    grid-template-columns: 1fr;
+  }
+}

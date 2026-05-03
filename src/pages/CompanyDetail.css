@@ -1,0 +1,423 @@
+/* ============================================================
+   Company Detail Page — SO Official Style
+   ============================================================ */
+
+.company-detail {
+  padding: 0 24px 48px;
+  max-width: 1100px;
+}
+
+/* ── Hero Header ──────────────────────────────── */
+.company-detail__hero {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 28px 0 20px;
+}
+
+.company-detail__logo {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-lg);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: 800;
+  color: #fff;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.company-detail__hero-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.company-detail__name {
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.company-detail__tagline {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+
+.company-detail__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.company-detail__follow-btn {
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  background: hsl(206, 100%, 52%);
+  color: #fff;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background 0.15s;
+  font-family: var(--font-family);
+}
+
+.company-detail__follow-btn:hover {
+  background: hsl(206, 100%, 40%);
+}
+
+.company-detail__follow-btn--following {
+  background: transparent;
+  color: var(--so-blue);
+  border: 1px solid var(--so-blue);
+}
+
+.company-detail__follow-btn--following:hover {
+  background: rgba(0, 116, 204, 0.05);
+}
+
+.company-detail__more-btn {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 18px;
+  transition: all 0.15s;
+}
+
+.company-detail__more-btn:hover {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+/* ── Tabs ─────────────────────────────────────── */
+.company-detail__tabs {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 24px;
+}
+
+.company-detail__tab {
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.1s;
+  font-family: var(--font-family);
+  margin-bottom: -1px;
+}
+
+.company-detail__tab:hover {
+  color: var(--text-primary);
+}
+
+.company-detail__tab--active {
+  color: var(--text-primary);
+  font-weight: 600;
+  border-bottom-color: var(--so-orange);
+}
+
+/* ── Content Layout ───────────────────────────── */
+.company-detail__content {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 24px;
+}
+
+/* ── Updates Feed (Left) ─────────────────────── */
+.company-detail__feed {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.company-detail__feed-title {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.company-detail__update {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.company-detail__update:first-of-type {
+  border-top: 1px solid var(--border-color);
+}
+
+.company-detail__update-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.company-detail__update-logo {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.company-detail__update-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.company-detail__update-author {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-primary);
+}
+
+.company-detail__update-author-verified {
+  color: #2EA043;
+  font-size: 11px;
+  margin-left: 2px;
+}
+
+.company-detail__update-time {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.company-detail__update-body {
+  font-size: 14px;
+  color: var(--text-primary);
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.company-detail__update-body a {
+  color: var(--so-blue);
+  text-decoration: none;
+}
+
+.company-detail__update-body a:hover {
+  color: var(--so-blue-hover);
+}
+
+.company-detail__update-image {
+  width: 100%;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  background: var(--bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.company-detail__update-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ── Sidebar (Right) ─────────────────────────── */
+.company-detail__sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.company-detail__sidebar-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.company-detail__sidebar-section-title {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--text-primary);
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.company-detail__sidebar-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.company-detail__sidebar-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.company-detail__sidebar-value {
+  font-size: 13px;
+  color: var(--text-primary);
+}
+
+.company-detail__sidebar-value a {
+  color: var(--so-blue);
+  text-decoration: none;
+}
+
+.company-detail__sidebar-value a:hover {
+  color: var(--so-blue-hover);
+}
+
+/* Info Grid */
+.company-detail__info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+}
+
+/* Social Icons */
+.company-detail__social {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.company-detail__social-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--so-blue);
+  transition: color 0.1s;
+  cursor: pointer;
+}
+
+.company-detail__social-icon:hover {
+  color: var(--so-blue-hover);
+}
+
+/* Photos */
+.company-detail__photos {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+.company-detail__photo {
+  width: 100%;
+  height: 160px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: 800;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+/* Tech Stack */
+.company-detail__tech-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.company-detail__tech-tag {
+  font-size: 12px;
+  padding: 5px 12px;
+  background: var(--tag-bg, hsl(205, 46%, 92%));
+  color: var(--tag-text, hsl(205, 47%, 42%));
+  border-radius: var(--radius-sm);
+  transition: all 0.1s;
+}
+
+/* About Tab */
+.company-detail__about {
+  font-size: 14px;
+  color: var(--text-primary);
+  line-height: 1.7;
+}
+
+.company-detail__about h3 {
+  font-size: 18px;
+  font-weight: 400;
+  margin: 24px 0 12px;
+  color: var(--text-primary);
+}
+
+.company-detail__about h3:first-child {
+  margin-top: 0;
+}
+
+.company-detail__about p {
+  margin-bottom: 12px;
+}
+
+.company-detail__about ul {
+  margin: 0 0 12px 20px;
+}
+
+.company-detail__about li {
+  margin-bottom: 4px;
+}
+
+/* Back Link */
+.company-detail__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  color: var(--so-blue);
+  text-decoration: none;
+  padding: 16px 0 0;
+  transition: color 0.1s;
+}
+
+.company-detail__back:hover {
+  color: var(--so-blue-hover);
+}
+
+/* ── Responsive ──────────────────────────────── */
+@media (max-width: 860px) {
+  .company-detail__content {
+    grid-template-columns: 1fr;
+  }
+
+  .company-detail__info-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .company-detail__hero {
+    flex-direction: column;
+    gap: 12px;
+  }
+}

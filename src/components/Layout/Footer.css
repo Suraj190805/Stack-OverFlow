@@ -1,0 +1,110 @@
+/* ============================================================
+   Footer — SO Official Dark Style
+   ============================================================ */
+
+.so-footer {
+  background: #232629;
+  color: #9FA6AD;
+  padding: 32px 12px;
+  margin-top: auto;
+}
+
+.so-footer__inner {
+  max-width: 1264px;
+  margin: 0 auto;
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.so-footer__logo {
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.so-footer__columns {
+  display: flex;
+  flex: 1;
+  gap: 12px;
+}
+
+.so-footer__column {
+  flex: 1;
+}
+
+.so-footer__column-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #BABFC4;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+}
+
+.so-footer__column ul {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.so-footer__column a {
+  font-size: 13px;
+  color: #9FA6AD;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.so-footer__column a:hover {
+  color: #D6D9DC;
+}
+
+.so-footer__socials {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 260px;
+  flex-shrink: 0;
+}
+
+.so-footer__social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.so-footer__social-links a {
+  font-size: 11px;
+  color: #9FA6AD;
+  text-decoration: none;
+}
+
+.so-footer__social-links a:hover {
+  color: #D6D9DC;
+}
+
+.so-footer__copyright {
+  font-size: 11px;
+  color: #6A737C;
+  line-height: 1.5;
+}
+
+.so-footer__copyright a {
+  color: #9FA6AD;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .so-footer__inner {
+    flex-direction: column;
+    gap: 24px;
+  }
+  .so-footer__columns {
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  .so-footer__column {
+    min-width: 130px;
+  }
+  .so-footer__socials {
+    width: 100%;
+  }
+}
