@@ -455,5 +455,5 @@ This project is for **educational purposes** — inspired by [Stack Overflow](ht
 ---
 
 <p align="center">
-  Built with ❤️ by <a href="https://github.com/Suraj190805">Suraj</a>
+  Built by <a href="https://github.com/Suraj190805">Suraj S</a>
 </p>
